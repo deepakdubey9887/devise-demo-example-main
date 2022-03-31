@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  
+  
+  belongs_to :role ,dependent: :destroy
+  accepts_nested_attributes_for :role, allow_destroy: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,

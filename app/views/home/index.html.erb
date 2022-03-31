@@ -1,3 +1,25 @@
 <div class="container p-5 my-5 bg-dark text-white">
   <h1 style ="text-align:center;">  welcome home</h1>
+  <%if user_signed_in?%>
+    <button id ="ajax" style ="text-align:center" onclick="loadDoc()">
+        get me the user details</button>
+    <%else %>
+        <p>sing to get the user details</p>
+  <%end%>
 </div>
+ 
+ 
+
+ 
+
+ <script>
+ function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("ajax").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "/user_details");
+  xhttp.send();
+}
+
+ </script>
