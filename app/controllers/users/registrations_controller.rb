@@ -5,15 +5,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+   
+  def new
+    #byebug
+    # Override Devise default behaviour and create a profile as well
+    build_resource({})
+    resource.build_role
+    respond_with self.resource
+  end
 
   # POST /resource
   # def create
   #   super
   # end
-
+  # def create
+  #   super
+  #   #@user = user
+  #   WelcomeMailer.send_greetings_notification(self).deliver_now
+  # end
+  # end
   # GET /resource/edit
   # def edit
   #   super
@@ -42,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :contact_number, :address, :email, :username, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :contact_number, :address, :email, :username, :password, :password_confirmation ,:role_id, roles_attributes: [:id,:role_name]])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -59,4 +69,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  private
+  
+  def after_sign_up_path_for(resource)
+    root_path # or any other path
+  end
+
 end

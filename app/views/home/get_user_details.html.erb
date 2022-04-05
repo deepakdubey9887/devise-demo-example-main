@@ -1,6 +1,88 @@
-<div id ="ajax" class="container">
-  <p><strong>first_name</strong><%=current_user.first_name%></p>
-  <p><strong>last_name</strong><%=current_user.last_name%></p>
-  <p><strong>contact no</strong><%=current_user.contact_number%></p>
-  <p><strong>address</strong><%=current_user.address%></p>
+<div id ="user_details" class="container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+      <div class="container">
+          <div class="team-single">
+              <div class="row">
+                  
+
+                  <div class="col-lg-8 col-md-7">
+                      <div class="team-single-text padding-50px-left sm-no-padding-left">
+                          
+                          <div class="contact-info-section margin-40px-tb">
+                              <ul class="list-style9 no-margin">
+                                  <li>
+
+                                      <div class="row">
+                                          <div class="col-md-5 col-5">
+                                              <!--<i class="fas fa-graduation-cap text-orange"></i>-->
+                                              <strong class="margin-10px-left text-orange">First Name:</strong>
+                                          </div>
+                                          <div class="col-md-7 col-7">
+                                              <p><%=current_user.first_name %></p>
+                                          </div>
+                                      </div>
+
+                                  </li>
+                                  <li>
+
+                                      <div class="row">
+                                          <div class="col-md-5 col-5">
+                                              <!--<i class="fas fa-graduation-cap text-orange"></i>-->
+                                              <strong class="margin-10px-left text-orange">Last Name:</strong>
+                                          </div>
+                                          <div class="col-md-7 col-7">
+                                              <p><%=current_user.last_name %></p>
+                                          </div>
+                                      </div>
+
+                                  </li>
+                                  <li>
+
+                                      <div class="row">
+                                          <div class="col-md-5 col-5">
+                                              <!--<i class="fas fa-phone text-orange"></i>-->
+                                              <strong class="margin-10px-left text-orange">Contact No:</strong>
+                                          </div>
+                                          <div class="col-md-7 col-7">
+                                              <p><%=current_user.contact_number %></p>
+                                          </div>
+                                      </div>
+
+                                  </li>
+                                  <li>
+
+                                      <div class="row">
+                                          <div class="col-md-5 col-5">
+                                              <i class="fas fa-map-marker-alt text-green"></i>
+                                              <strong class="margin-10px-left text-green">Address:</strong>
+                                          </div>
+                                          <div class="col-md-7 col-7">
+                                              <p><%=current_user.address%></p>
+                                          </div>
+                                      </div>
+
+                                  </li>
+                                 
+                                  <li>
+                                      <div class="row">
+                                          <div class="col-md-5 col-5">
+                                              <i class="fas fa-envelope text-pink"></i>
+                                              <strong class="margin-10px-left xs-margin-four-left text-pink">Email:</strong>
+                                          </div>
+                                          <div class="col-md-7 col-7">
+                                              <p><a href="javascript:void(0)"><%=current_user.email%></a></p>
+                                          </div>
+                                      </div>
+                                  </li>
+                              </ul>
+                          
+                      </div>
+                  </div>
+
+                  <div class="col-md-12">
+
+                  </div>
+              </div>
+          </div>
+      </div>
 </div>

@@ -1,0 +1,14 @@
+$('#g').click(function() {
+    var result= {};
+     $("#user_details").serializeArray().map(function(item) {
+        if ( result[item.name] ) {
+            if ( typeof(result[item.name]) === "string" ) {
+                result[item.name] = [config[item.name]];
+            }
+            result[item.name].push(item.value);
+        } else {
+            result[item.name] = item.value;
+        }
+    });
+ console.log(result);
+});

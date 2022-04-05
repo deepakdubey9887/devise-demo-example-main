@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   
   
-  belongs_to :role ,dependent: :destroy
-  accepts_nested_attributes_for :role, allow_destroy: true
+  belongs_to :role 
+  #accepts_nested_attributes_for :role, allow_destroy: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
@@ -10,7 +10,7 @@ class User < ApplicationRecord
          :recoverable, 
          :rememberable, 
          :validatable, 
-         :confirmable, 
+         #:confirmable, 
          :trackable,
          authentication_keys: [:login]
 
@@ -21,13 +21,20 @@ class User < ApplicationRecord
   def login
     @login || self.username || self.email
   end
-
-  private
-
-  def after_confirmation
-    WelcomeMailer.send_greetings_notification(self)
+  
+  
+  after_create :send_greetings_notification
+  def send_greetings_notification  
+  WelcomeMailer.send_greetings_notification(self)
                  .deliver_now
   end
+ 
+  private
+
+  
+   def confirmation_required?
+    false
+   end
 
   def self.find_for_database_authentication(warden_condition)
     conditions = warden_condition.dup
